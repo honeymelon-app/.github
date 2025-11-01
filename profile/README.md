@@ -2,8 +2,6 @@
 
 Mac-only media tools for Apple Silicon. We build a small, fast, privacy-first converter that “just works” using FFmpeg, Tauri, and Vue.
 
----
-
 ## What we build
 
 **Honeymelon** is a desktop app for macOS (arm64) that converts video, audio, and images with a clean, preset-driven UI. It favors remux-first workflows, re-encoding only when required, and runs FFmpeg out of process for reliability.
@@ -14,8 +12,6 @@ Mac-only media tools for Apple Silicon. We build a small, fast, privacy-first co
 - Apple Silicon performance with hardware acceleration via VideoToolbox
 - Small footprint and fast startup using Tauri
 
----
-
 ## Why it exists
 
 Media converters tend to be either heavyweight or overly technical. Honeymelon aims for a narrow, reliable core:
@@ -24,8 +20,6 @@ Media converters tend to be either heavyweight or overly technical. Honeymelon a
 - Minimal UI with strong affordances
 - Predictable output compatible with mainstream players and editors
 
----
-
 ## Technology
 
 - **Desktop:** Tauri (Rust) + Vue 3 + Vite + TypeScript + shadcn-vue
@@ -33,16 +27,12 @@ Media converters tend to be either heavyweight or overly technical. Honeymelon a
 - **Packaging:** macOS Apple Silicon, signed and notarized
 - **Updates:** Optional in-app updates with signed feeds
 
----
-
 ## Roadmap (high level)
 
 - v1: Many-to-many conversions, subtitle handling, basic queue, dark mode
 - v1.1: Batch folder ingest, simple rename templates, per-track selection
 - v1.2: Trim and basic crop when re-encoding, improved telemetry opt-in
 - v2: Plugin-style preset packs and enterprise distribution options
-
----
 
 ## Repositories
 
@@ -52,8 +42,6 @@ Media converters tend to be either heavyweight or overly technical. Honeymelon a
 - `ffmpeg-builds` — reproducible Apple Silicon FFmpeg/FFprobe builds
 
 (Names may change as the organization evolves.)
-
----
 
 ## Contributing
 
@@ -65,13 +53,9 @@ We welcome focused contributions that keep the app small, fast, and easy to use.
 
 Security reports: contact the maintainers directly. We coordinate responsible disclosure.
 
----
-
 ## Legal
 
 Honeymelon uses FFmpeg under the LGPL. We do not enable GPL or non-free components in our distributed builds. Some codecs may be patent-encumbered in certain jurisdictions; we prefer system-provided implementations where applicable. See the app’s Third-Party Notices for details.
-
----
 
 ## Links
 

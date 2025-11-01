@@ -1,74 +1,81 @@
 # Honeymelon 🍈
 
-High-quality, privacy-respecting media tools for macOS. This organization houses the apps, websites, and infrastructure that power Honeymelon’s distribution, updates, and documentation.
+Mac-only media tools for Apple Silicon. We build a small, fast, privacy-first converter that “just works” using FFmpeg, Tauri, and Vue.
+
+---
 
 ## What we build
 
-- **App**: A fast, reliable macOS media converter with first-class H.264/HEVC support and smart presets.
-- **Distribution**: Lightweight, low-cost delivery using GitHub Releases, Cloudflare Pages/Workers, and optional license-gated downloads.
-- **Documentation**: Versioned user guides aligned with app releases.
-- **Legal**: Immutable, versioned public policies.
+**Honeymelon** is a desktop app for macOS (arm64) that converts video, audio, and images with a clean, preset-driven UI. It favors remux-first workflows, re-encoding only when required, and runs FFmpeg out of process for reliability.
 
-## Repositories
+- Simple, guided presets instead of complex flags
+- Remux when possible; transcode only when needed
+- Local processing by default; no media leaves your machine
+- Apple Silicon performance with hardware acceleration via VideoToolbox
+- Small footprint and fast startup using Tauri
 
-Public repos will appear here as they are created. Planned split:
+---
 
-- `website` — Marketing site and download page (Cloudflare Pages)
-- `docs` — Versioned documentation
-- `legal` — Immutable legal pages (versioned by date)
-- `updates` — Public Tauri updater manifests
-- `download-worker` — Optional Cloudflare Worker for license-gated downloads
-- `app-macos` — Tauri app (Apple Silicon)
-- `release-workflows` — Reusable GitHub Actions
-- `ops` — Operations notes and future IaC
+## Why it exists
 
-## Downloads and updates
+Media converters tend to be either heavyweight or overly technical. Honeymelon aims for a narrow, reliable core:
 
-- Stable builds are published via **GitHub Releases** in `app-macos`.
-- The app’s auto-updater reads manifests from the `updates` repository:
-  - `https://www.honeymelon.app/updates/stable/latest.json`
-- Direct download links are exposed on the `website` repository’s download page.
+- Sensible defaults for common tasks
+- Minimal UI with strong affordances
+- Predictable output compatible with mainstream players and editors
 
-## Pricing and licensing
+---
 
-- Purchases are handled via a third-party provider (e.g., Lemon Squeezy or Paddle) for taxes and receipts.
-- License keys unlock Pro features and may be validated periodically by a lightweight API or Worker.
+## Technology
 
-## Documentation
+- **Desktop:** Tauri (Rust) + Vue 3 + Vite + TypeScript + shadcn-vue
+- **Engine:** FFmpeg and FFprobe invoked out-of-process
+- **Packaging:** macOS Apple Silicon, signed and notarized
+- **Updates:** Optional in-app updates with signed feeds
 
-- Latest: `https://docs.honeymelon.app/latest/`
-- Versioned: `https://docs.honeymelon.app/<major.minor>/`
-
-## Legal
-
-- Policies are versioned and permanently accessible:
-  - Terms of Service: `https://legal.honeymelon.app/tos/<YYYY-MM-DD>/`
-  - Privacy Policy: `https://legal.honeymelon.app/privacy/<YYYY-MM-DD>/`
-  - EULA: `https://legal.honeymelon.app/eula/<YYYY-MM-DD>/`
-  - Third-party notices and attributions are generated from an SBOM at build time.
+---
 
 ## Roadmap (high level)
 
-- Short term: public beta, preset library, stable auto-update channel, docs v1.
-- Mid term: license-gated downloads, watch folders, beta channel, telemetry opt-in with on-device logs.
-- Long term: R2/S3 artifact storage, staged rollouts, enterprise licensing, Windows build evaluation.
+- v1: Many-to-many conversions, subtitle handling, basic queue, dark mode
+- v1.1: Batch folder ingest, simple rename templates, per-track selection
+- v1.2: Trim and basic crop when re-encoding, improved telemetry opt-in
+- v2: Plugin-style preset packs and enterprise distribution options
+
+---
+
+## Repositories
+
+- `honeymelon` — desktop app (Tauri + Vue)
+- `site` — marketing website and downloads
+- `docs` — user guide and licensing notes
+- `ffmpeg-builds` — reproducible Apple Silicon FFmpeg/FFprobe builds
+
+(Names may change as the organization evolves.)
+
+---
 
 ## Contributing
 
-We welcome issues and suggestions. Contribution guidelines and a code of conduct will be published as repositories open up:
+We welcome focused contributions that keep the app small, fast, and easy to use.
 
-- Issue reports: clear steps to reproduce, expected vs. actual behavior, and system details.
-- Pull requests: focused changes, tests where applicable, and a short rationale.
+1. Open an issue describing the change and its impact on simplicity and performance.
+2. Follow our coding standards (TypeScript strict, ESLint + Prettier, minimal Rust).
+3. Keep the UI within shadcn-vue components and utility classes. No custom CSS.
 
-## Security and responsible disclosure
+Security reports: contact the maintainers directly. We coordinate responsible disclosure.
 
-If you believe you have found a security issue, please report it privately:
+---
 
-- Email: <security@honeymelon.app>
-We aim to acknowledge reports within five business days.
+## Legal
 
-## Contact and support
+Honeymelon uses FFmpeg under the LGPL. We do not enable GPL or non-free components in our distributed builds. Some codecs may be patent-encumbered in certain jurisdictions; we prefer system-provided implementations where applicable. See the app’s Third-Party Notices for details.
 
-- General inquiries: <info@honeymelon.app>
-- Support requests: <support@honeymelon.app>
-- News and release notes will be posted in the `website` repository and on the download page.
+---
+
+## Links
+
+- Website: <https://honeymelon.app>
+- Documentation: <https://docs.honeymelon.app>
+- Issues: <https://github.com/honeymelon-app/honeymelon/issues>
+- Releases: <https://github.com/honeymelon-app/honeymelon/releases>
